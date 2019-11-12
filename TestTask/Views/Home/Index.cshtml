@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Курс валют";
+}
+
+<div class="text-center">
+    @if (ViewData["valuts-list"] == "true")
+    {
+        <partial name="_ListValutsView.cshtml" />
+    }
+    else
+    {
+        <partial name="_DynamicView.cshtml" />
+    }
+    <div id="dynamic"></div>
+
+</div>

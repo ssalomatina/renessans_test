@@ -1,0 +1,45 @@
+﻿@using TestTask.Models
+@model IEnumerable<ListValuts>
+
+    <div id="list-valuts">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestTask</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <div class="head-table">
+            <div>Курс валют на @ViewData["Date"]</div>
+            <input type="date" id="select-date-list-valuts" name="select-date-list-valuts" class="select-date-list-valuts" asp-controller="Home" asp-action="Index" value=@ViewData["Date_for_input"] onchange="RequestListValuts(this.value)">
+
+        </div>
+        <table>
+            <tr>
+                <th>Цифровой код</th>
+                <th>Буквенный код</th>
+                <th>Единиц</th>
+                <th>Валюта</th>
+                <th>Курс</th>
+            </tr>
+            @foreach (ListValuts valuts in Model)
+            {
+                <tr class="valut" onclick="RequestDynamicOfValuts(this.id)" id=@valuts.ID>
+                    <td>@valuts.NumCode</td>
+                    <td>@valuts.CharCode</td>
+                    <td>@valuts.Nominal</td>
+                    <td>@valuts.Name</td>
+                    <td>@valuts.Value</td>
+                </tr>
+            }
+        </table>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - TestTask
+            </div>
+        </footer>
+    </div>

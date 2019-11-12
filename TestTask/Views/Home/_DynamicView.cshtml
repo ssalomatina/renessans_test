@@ -1,0 +1,28 @@
+﻿@using TestTask.Models
+@model IEnumerable<Dynamic>
+    <div id="dynamic-info">
+        <div class="head-table dynamic">
+            <a class="link-back" onclick="BackToListValuts()">&laquo;</a>
+            <div class="date-range">
+                с <input type="date" id="select-dateBegin-dynamic" name="select-dateBegin-dynamic" value=@ViewData["DateRange1"] onchange="RequestDynamicOfValuts('none')">
+                по <input type="date" id="select-dateEnd-dynamic" name="select-dateEnd-dynamic" value=@ViewData["DateRange2"] onchange="RequestDynamicOfValuts('none')">
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Дата</th>
+                <th>Единиц</th>
+                <th>Курс</th>
+            </tr>
+            @foreach (Dynamic dynamic in Model)
+            {
+                <tr>
+                    <td><input type="hidden" value="@dynamic.ID" id="id-dynamic">@dynamic.Date</td>
+                    <td>@dynamic.Nominal</td>
+                    <td>@dynamic.ValueDynamic</td>
+                </tr>
+
+            }
+        </table>
+    </div>
+
